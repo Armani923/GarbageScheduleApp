@@ -1,0 +1,382 @@
+[
+    {
+        "date": "03.01.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "04.01.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "11.01.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "17.01.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "18.01.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "22.01.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "25.01.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "26.01.2024",
+        "type": "Ast- und Strauchwerk"
+    },
+    {
+        "date": "31.01.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "01.02.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "08.02.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "14.02.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "15.02.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "19.02.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "22.02.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "28.02.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "29.02.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "07.03.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "13.03.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "14.03.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "16.03.2024",
+        "type": "Problemstoffe"
+    },
+    {
+        "date": "18.03.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "21.03.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "27.03.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "28.03.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "04.04.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "10.04.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "11.04.2024",
+        "type": "Ast- und Strauchwerk"
+    },
+    {
+        "date": "15.04.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "18.04.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "24.04.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "25.04.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "02.05.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "08.05.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "11.05.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "13.05.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "16.05.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "22.05.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "23.05.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "30.05.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "05.06.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "06.06.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "10.06.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "13.06.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "15.06.2024",
+        "type": "Problemstoffe"
+    },
+    {
+        "date": "19.06.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "20.06.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "27.06.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "03.07.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "04.07.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "08.07.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "11.07.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "17.07.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "18.07.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "25.07.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "31.07.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "01.08.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "05.08.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "08.08.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "14.08.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "15.08.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "22.08.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "28.08.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "29.08.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "02.09.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "05.09.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "11.09.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "12.09.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "19.09.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "25.09.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "26.09.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "30.09.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "05.10.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "09.10.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "10.10.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "17.10.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "23.10.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "24.10.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "28.10.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "02.11.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "06.11.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "07.11.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "14.11.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "20.11.2024",
+        "type": "Ast- und Strauchwerk"
+    },
+    {
+        "date": "21.11.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "23.11.2024",
+        "type": "Problemstoffe"
+    },
+    {
+        "date": "25.11.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "28.11.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "04.12.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "05.12.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "12.12.2024",
+        "type": "Bioabfall"
+    },
+    {
+        "date": "18.12.2024",
+        "type": "Gelber Sack"
+    },
+    {
+        "date": "19.12.2024",
+        "type": "Restabfall"
+    },
+    {
+        "date": "23.12.2024",
+        "type": "Papier"
+    },
+    {
+        "date": "28.12.2024",
+        "type": "Bioabfall"
+    }
+]
