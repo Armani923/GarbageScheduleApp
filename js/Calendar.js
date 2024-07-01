@@ -386,24 +386,81 @@ var trashPickups = [
 ];
 
     function parseDate(dateString) {
-        var parts = dateString.split(".");
-        return new Date(parts[2], parts[1] - 1, parts[0]);
+    const parts = dateString.split(".");
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+
+function formatDate(date) {
+    return `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
+}
+
+// Enhanced checkTrashPickup function
+function checkTrashPickup(daysAhead = 1) {
+    const now = new Date();
+    const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysAhead);
+    const formattedTargetDate = formatDate(targetDate);
+
+    const pickups = trashPickups.filter(pickup => pickup.date === formattedTargetDate);
+
+    if (pickups.length > 0) {
+        return pickups.map(pickup => `Reminder: ${daysAhead === 1 ? 'Tomorrow' : 'In ' + daysAhead + ' days'}, ${pickup.type} will be picked up.`).join('\n');
     }
 
-    function checkTrashPickup() {
-        var now = new Date();
-        var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    return `No trash pickup scheduled for ${daysAhead === 1 ? 'tomorrow' : 'the next ' + daysAhead + ' days'}.`;
+}
 
-        for (var i = 0; i < trashPickups.length; i++) {
-            var pickup = trashPickups[i];
-            var pickupDate = parseDate(pickup.date);
+// New function to get upcoming pickups
+function getUpcomingPickups(days = 7) {
+    const now = new Date();
+    const endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + days);
+    
+    return trashPickups.filter(pickup => {
+        const pickupDate = parseDate(pickup.date);
+        return pickupDate >= now && pickupDate <= endDate;
+    }).sort((a, b) => parseDate(a.date) - parseDate(b.date));
+}
 
-            if (pickupDate.getDate() === tomorrow.getDate() && pickupDate.getMonth() === tomorrow.getMonth() && pickupDate.getFullYear() === tomorrow.getFullYear()) {
-                return 'Reminder: Tommorow' + pickup.type + ' Will Be Picked Up.';
-            }
-        }
+// New function to render upcoming pickups
+function renderUpcomingPickups() {
+    const upcomingPickups = getUpcomingPickups();
+    const upcomingList = document.getElementById('upcomingList');
+    upcomingList.innerHTML = '';
 
-        return 'No Trash Pick Up Scheduled For Tommorow';
+    upcomingPickups.forEach(pickup => {
+        const li = document.createElement('li');
+        li.textContent = `${pickup.date}: ${pickup.type}`;
+        upcomingList.appendChild(li);
+    });
+}
+
+// New function to set custom reminder
+function setCustomReminder() {
+    const reminderDate = document.getElementById('reminderDate').value;
+    const reminderType = document.getElementById('reminderType').value;
+    
+    if (reminderDate && reminderType) {
+        const formattedDate = formatDate(new Date(reminderDate));
+        trashPickups.push({ date: formattedDate, type: reminderType });
+        renderUpcomingPickups();
+        alert('Custom reminder set successfully!');
+    } else {
+        alert('Please enter both date and type for the custom reminder.');
     }
+}
 
+// Initialize the app
+function initApp() {
     document.getElementById('reminder').textContent = checkTrashPickup();
+    renderUpcomingPickups();
+
+    // Set up event listeners
+    document.getElementById('checkNextPickup').addEventListener('click', () => {
+        const days = parseInt(document.getElementById('daysAhead').value) || 1;
+        document.getElementById('reminder').textContent = checkTrashPickup(days);
+    });
+
+    document.getElementById('setReminder').addEventListener('click', setCustomReminder);
+}
+
+// Call initApp when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initApp);
