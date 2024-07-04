@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="manifest" href="/manifest.json">
-  <title>Trash Pickup Notifications</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get timely notifications for trash pickup schedules">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <title>MyPickUp App</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Trash Pickup Notifications</h1>
-    <p id="reminder"></p>
-    
-    <div class="check-pickup">
-      <input type="number" id="daysAhead" min="1" max="30" value="1">
-      <button id="checkNextPickup">Check Next Pickup</button>
+    <div class="container">
+        <h1>MyPickUp App</h1>
+        <p id="reminder"></p>
+        <div class="check-pickup">
+            <input type="number" id="daysAhead" min="1" value="1">
+            <button id="checkNextPickup">Check Next Pickup</button>
+        </div>
+        <h2>Upcoming Pickups</h2>
+        <ul id="upcomingList"></ul>
+        <div class="custom-reminder">
+            <input type="date" id="reminderDate">
+            <select id="reminderType">
+                <option value="Gelber Sack">Gelber Sack</option>
+                <option value="Restabfall">Restabfall</option>
+                <option value="Bioabfall">Bioabfall</option>
+                <option value="Papier">Papier</option>
+                <option value="Ast- und Strauchwerk">Ast- und Strauchwerk</option>
+                <option value="Problemstoffe">Problemstoffe</option>
+            </select>
+            <button id="setReminder">Set Custom Reminder</button>
+        </div>
     </div>
-
-    <h2>Upcoming Pickups</h2>
-    <ul id="upcomingList"></ul>
-
-    <h2>Set Custom Reminder</h2>
-    <div class="custom-reminder">
-      <input type="date" id="reminderDate">
-      <input type="text" id="reminderType" placeholder="Pickup Type">
-      <button id="setReminder">Set Reminder</button>
-    </div>
-  </div>
-  <script src="Calender.js"></script>
+    <script src="./js/Calendar.js"></script>
 </body>
 </html>
