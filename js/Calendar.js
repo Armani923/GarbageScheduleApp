@@ -1,3 +1,13 @@
+const TRASH_TYPES = {
+    YELLOW_BAG: 'Gelber Sack',
+    RESIDUAL: 'Restabfall',
+    BIO: 'Bioabfall',
+    PAPER: 'Papier',
+    BRANCHES: 'Ast- und Strauchwerk',
+    PROBLEMATIC: 'Problemstoffe'
+};
+
+
 var trashPickups = [
     {
     "date": "03.01.2024",
@@ -385,14 +395,13 @@ var trashPickups = [
 }
 ];
 
-    function parseDate(dateString) {
-    const parts = dateString.split(".");
-    return new Date(parts[2], parts[1] - 1, parts[0]);
-}
+const parseDate = dateString => {
+    const [day, month, year] = dateString.split('.').map(Number);
+    return new Date(year, month - 1, day);
+};
 
-function formatDate(date) {
-    return `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
-}
+const formatDate = date => 
+    `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
 
 // Enhanced checkTrashPickup function
 function checkTrashPickup(daysAhead = 1) {
@@ -403,10 +412,11 @@ function checkTrashPickup(daysAhead = 1) {
     const pickups = trashPickups.filter(pickup => pickup.date === formattedTargetDate);
 
     if (pickups.length > 0) {
-        return pickups.map(pickup => `Reminder: ${daysAhead === 1 ? 'Tomorrow' : 'In ' + daysAhead + ' days'}, ${pickup.type} will be picked up.`).join('\n');
+        const timeframe = daysAhead === 1 ? 'Tomorrow' : `In ${daysAhead} days`;
+        return pickups.map(pickup => `Reminder: ${timeframe}, ${pickup.type} will be picked up.`).join('\n');
     }
 
-    return `No trash pickup scheduled for ${daysAhead === 1 ? 'tomorrow' : 'the next ' + daysAhead + ' days'}.`;
+    return `No trash pickup scheduled for ${daysAhead === 1 ? 'tomorrow' : `the next ${daysAhead} days`}.`;
 }
 
 // New function to get upcoming pickups
@@ -424,13 +434,9 @@ function getUpcomingPickups(days = 7) {
 function renderUpcomingPickups() {
     const upcomingPickups = getUpcomingPickups();
     const upcomingList = document.getElementById('upcomingList');
-    upcomingList.innerHTML = '';
-
-    upcomingPickups.forEach(pickup => {
-        const li = document.createElement('li');
-        li.textContent = `${pickup.date}: ${pickup.type}`;
-        upcomingList.appendChild(li);
-    });
+    upcomingList.innerHTML = upcomingPickups
+        .map(pickup => `<li>${pickup.date}: ${pickup.type}</li>`)
+        .join('');
 }
 
 // New function to set custom reminder
@@ -439,7 +445,7 @@ function setCustomReminder() {
     const reminderType = document.getElementById('reminderType').value;
     
     if (reminderDate && reminderType) {
-        const formattedDate = formatDate(new Date(reminderDate));
+        const formattedDate = formatDate(parseDate(reminderDate));
         trashPickups.push({ date: formattedDate, type: reminderType });
         renderUpcomingPickups();
         alert('Custom reminder set successfully!');
@@ -449,9 +455,10 @@ function setCustomReminder() {
 }
 
 // Initialize the app
-function initApp() {
+async function initApp() {
     document.getElementById('reminder').textContent = checkTrashPickup();
     renderUpcomingPickups();
+
 
     // Set up event listeners
     document.getElementById('checkNextPickup').addEventListener('click', () => {
@@ -460,6 +467,9 @@ function initApp() {
     });
 
     document.getElementById('setReminder').addEventListener('click', setCustomReminder);
+
+    await registerServiceWorker();
+    await subscribeUserToPush();
 }
 
 // Call initApp when the DOM is fully loaded
@@ -474,3 +484,51 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+async function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      try {
+        const registration = await navigator.serviceWorker.register('/service-worker.js');
+        console.log('Service worker registered:', registration);
+      } catch (error) {
+        console.error('Service worker registration failed:', error);
+      }
+    }
+  }
+  
+  async function subscribeUserToPush() {
+    const registration = await navigator.serviceWorker.ready;
+    const subscription = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: 'YOUR_PUBLIC_VAPID_KEY'
+    });
+    
+    // Send the subscription to your server
+    await fetch('/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(subscription),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+  
+  // Modified initApp function
+  function initApp() {
+    document.getElementById('reminder').textContent = checkTrashPickup();
+    renderUpcomingPickups();
+  
+    // Set up event listeners
+    document.getElementById('checkNextPickup').addEventListener('click', () => {
+      const days = parseInt(document.getElementById('daysAhead').value) || 1;
+      document.getElementById('reminder').textContent = checkTrashPickup(days);
+    });
+  
+    document.getElementById('setReminder').addEventListener('click', setCustomReminder);
+  
+    // Register service worker and subscribe to push notifications
+    registerServiceWorker().then(subscribeUserToPush);
+  }
+  
+  // Call initApp when the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', initApp);
